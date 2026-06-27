@@ -20,6 +20,7 @@ export default function AiChatPopup({
 
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+const API = import.meta.env.VITE_API_URL;
 
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
@@ -50,7 +51,7 @@ export default function AiChatPopup({
       console.log(question);
 
       const res = await fetch(
-        "http://localhost:5000/api/ai/chat",
+        `${API}/ai/chat`,
         {
           method: "POST",
           headers: {

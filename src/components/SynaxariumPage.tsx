@@ -17,6 +17,7 @@ const playXpSound = () => {
 export default function SynaxariumPage() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+const API = import.meta.env.VITE_API_URL;
 
   // 🔥 Font size
   const [fontSize, setFontSize] = useState(() => {
@@ -40,7 +41,7 @@ export default function SynaxariumPage() {
     };
 
     const dateKey = getApiDate();
-    const url = `http://localhost:5000/api/katameros/${dateKey}`;
+    const url = `${API}/katameros/${dateKey}`;
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
