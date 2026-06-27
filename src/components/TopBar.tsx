@@ -8,7 +8,7 @@ import logoDark from "../../src/assets/darklogo.png";
 export default function TopBar() {
   const [query, setQuery] = useState("");
   const [openSearch, setOpenSearch] = useState(false);
-  const [dark, setDark] = useState(false);
+  const [dark] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const navigate = useNavigate();
