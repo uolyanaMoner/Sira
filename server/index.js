@@ -13,8 +13,15 @@ import aiRoutes from "./routes/ai-routes.js";
 const app = express();
 
 // middleware
-app.use(cors());
-app.use(express.json());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://sira1-eta.vercel.app",
+    ],
+    credentials: true,
+  })
+);app.use(express.json());
 
 // DB CONNECT
 mongoose
@@ -33,14 +40,12 @@ app.get("/", (req, res) => {
 });
 
 console.log("KEY:", process.env.GROQ_API_KEY);
-const PORT = process.env.PORT || 5000;
-console.log(process.env.MONGO_URI);
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 5000;
 
-console.log({
-  MONGO_URI: process.env.MONGO_URI,
-  GROQ_API_KEY: process.env.GROQ_API_KEY,
-  PORT: process.env.PORT,
-});
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
+}
+
+export default app;
