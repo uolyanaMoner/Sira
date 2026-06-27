@@ -91,7 +91,7 @@ export default function SpiritualGuide() {
   };
 
   /* =======================
-     MOODS LIST (FIXED TYPES)
+     MOODS LIST (TYPE SAFE)
   ======================= */
   const moods: [Mood, string][] = [
     ["sad", "😔 حزين"],

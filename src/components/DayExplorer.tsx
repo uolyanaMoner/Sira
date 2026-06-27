@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,7 +11,7 @@ export default function DayExplorer() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [loading, setLoading] = useState(true);
 
-
+const pressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const handleDateChange = (date: Date | null) => {
   setSelectedDate(date);
 };
