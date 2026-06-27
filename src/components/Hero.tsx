@@ -6,6 +6,7 @@ import Button from "./Button";
 export default function HeroSection() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const API = import.meta.env.VITE_API_URL;
 
   const navigate = useNavigate();
 
@@ -93,7 +94,7 @@ export default function HeroSection() {
     );
   }
  useEffect(() => {
-  const url = `http://localhost:5000/api/katameros/${getApiDate()}`;
+  const url = `${API}/katameros/${getApiDate()}`;
 
   fetch(url)
     .then((res) => res.json())

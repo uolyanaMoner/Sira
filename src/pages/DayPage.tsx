@@ -7,6 +7,7 @@ export default function DayPage() {
 
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
+    const API = import.meta.env.VITE_API_URL;
     // 📡 FORMAT DATE FOR API
     const getApiDate = (inputDate: string) => {
         const [year, month, day] = inputDate.split("-");
@@ -23,17 +24,28 @@ export default function DayPage() {
             .trim();
     };
     // 📡 FETCH DATA
-    useEffect(() => {
-        if (!date) return;
-        const apiDate = getApiDate(date);
-        const url = `https://api.katameros.app/readings/gregorian/${apiDate}?languageId=3`;
-        setLoading(true);
-        fetch(url)
-            .then((res) => res.json())
-            .then((res) => setData(res))
-            .catch(() => setData(null))
-            .finally(() => setLoading(false));
-    }, [date]);
+useEffect(() => {
+    if (!date) return;
+
+    const apiDate = getApiDate(date);
+
+    setLoading(true);
+
+    fetch(`${API}/katameros/${apiDate}`)
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`HTTP ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((res) => setData(res))
+        .catch((err) => {
+            console.error(err);
+            setData(null);
+        })
+        .finally(() => setLoading(false));
+
+}, [date, API]);
     // ⏳ LOADING
     if (loading) {
         return (

@@ -201,12 +201,6 @@ export default function TopBar() {
           <button onClick={() => navigate("../notes")}>
             الملاحظات
           </button>
-
-          <button>EN</button>
-
-          <button onClick={() => setDark(!dark)}>
-            {dark ? "فاتح" : "داكن"}
-          </button>
         </div>
       )}
     </header>
