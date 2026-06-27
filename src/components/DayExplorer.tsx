@@ -11,6 +11,11 @@ export default function DayExplorer() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [loading, setLoading] = useState(true);
 
+
+  const handleDateChange = (date: Date | null) => {
+  setSelectedDate(date);
+};
+
   // ⏳ Skeleton loading
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -104,7 +109,7 @@ export default function DayExplorer() {
 
               <DatePicker
                 selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
+                onChange={handleDateChange}
                 dateFormat="yyyy-MM-dd"
                 maxDate={new Date("2100-01-01")}
                 popperClassName="z-50"
