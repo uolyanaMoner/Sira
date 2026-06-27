@@ -10,10 +10,6 @@ export default function DayExplorer() {
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [loading, setLoading] = useState(true);
-
-  // ⛔ كان غير مستخدم → هنشيله
-  const pressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
   };
