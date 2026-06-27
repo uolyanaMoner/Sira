@@ -42,7 +42,6 @@ export default function AchievementSlider() {
 
   // 🎯 XP & Level
   const currentLevelXP = data.xp % 100;
-  const xpTarget = 100;
 
   // 🎯 Slides
   const slides = useMemo(
