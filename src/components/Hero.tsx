@@ -9,7 +9,7 @@ export default function HeroSection() {
   const API = import.meta.env.VITE_API_URL;
 
   const navigate = useNavigate();
-
+console.log("API =", import.meta.env.VITE_API_URL);
   const HERO_IMAGE =
     "https://images.unsplash.com/photo-1595644258108-7e37472bd7b9";
 
